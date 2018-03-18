@@ -53,10 +53,12 @@ class model(BaseEstimator):
     def predict(self, X):
         ''' This is called to make predictions on test data. Predicted classes are output.'''
         #return self.clf.predict(X)
+        
+        #comme on a une auc de 0.12, on essaie de prédire l'autre classe
         a = self.clf.predict(X)
         i = 0
         while i<len(a) :
-            a[i]= (a[i]-1)*(a[i]-1)
+            a[i]= abs(a[i]-1)
             i+=1
         return a
 
